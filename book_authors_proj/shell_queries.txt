@@ -1,0 +1,78 @@
+************	Query: Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby	
+Book.objects.create(title="C Sharp", desc = "Learn C Sharp")
+Book.objects.create(title="Java", desc = "Learn Java")
+Book.objects.create(title="Python", desc = "Learn Python")
+Book.objects.create(title="PHP", desc = "Learn PHP")
+Book.objects.create(title="Ruby", desc = "Learn Ruby")
+
+****** Query: Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+
+Author.objects.create(first_name = "Jane", last_name = "Austen")
+Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+Author.objects.create(first_name = "Fyodor", last_name = "Dostoevksy")
+Author.objects.create(first_name = "William", last_name = "Shakespeare")
+Author.objects.create(first_name = "Lao", last_name = "Tzu")
+
+****Query: Change the name of the C Sharp book to C#
+c = Book.objects.get(id=1)
+c.title = "C#"
+c.save()
+
+
+
+********Query: Change the first name of the 4th author to Bill	
+author4 = Author.objects.get(id=4)
+author4.first_name = "Bill"
+author4.save()
+
+********Query: Assign the first author to the first 2 books	
+a = Book.objects.get(id=1)
+b = Author.objects.get(id=1)
+a.author.add(b)
+a.save()
+
+a2 = Book.objects.get(id=2)
+a2.author.add(b)
+a2.save()
+
+********Query: Assign the second author to the first 3 books	
+b2 = Author.objects.get(id=2)
+a3 = Book.objects.get(id=3)
+a.author.add(b2)
+a2.author.add(b2)
+a3.author.add(b2)
+
+********Query: Assign the third author to the first 4 books	
+b3 = Author.objects.get(id=3)
+a4 = Book.objects.get(id=4)
+a.author.add(b3)
+a2.author.add(b3)
+a3.author.add(b3)
+a4.author.add(b3)
+
+********Query: Assign the fourth author to the first 5 books (or in other words, all the books)	
+b4 = Author.objects.get(id=4)
+a5 = Book.objects.get(id=5)
+a.author.add(b4)
+a2.author.add(b4)
+a3.author.add(b4)
+a4.author.add(b4)
+a5.author.add(b4)
+
+********Query: Retrieve all the authors for the 3rd book	
+a3.author.all()
+
+Query: Remove the first author of the 3rd book
+b1 = Author.objects.get(id=1)
+a3.author.remove(b1)	
+
+Query: Add the 5th author as one of the authors of the 2nd book	
+b5 = Author.objects.get(id=5)
+a2.author.add(b5)
+
+Query: Find all the books that the 3rd author is part of
+b3.books.all()	
+
+
+Find all authors of the fifth book
+a5.author.all()

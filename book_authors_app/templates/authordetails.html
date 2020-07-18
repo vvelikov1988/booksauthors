@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Author Details:</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Name:{{author.first_name}} {{author.last_name}}</h1><br>
+        <h2>Author ID Id:{{author.id}}</h2><br>
+        <h3>Notes:{{author.notes}}</h3><br>
+        <ul>Books:
+            {% for book in books %}
+            <li>{{ book.title }} </li>
+            {% endfor %}
+        </ul><br>

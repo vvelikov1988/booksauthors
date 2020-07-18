@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Book Details:</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Title:{{book.title}}</h1><br>
+        <h2>Book Id:{{book.id}}</h2><br>
+        <h3>Description:{{book.desc}}</h3><br>
+        <ul>Authors:
+            {% for author in book.author.all %}
+            <li>{{ author.first_name }} {{ author.last_name }}</li>
+            {% endfor %}
+        </ul><br>
+        {% if authors %}
+        <form action ="/viewbook/{{book.id}}/assignauthor" method="POST">
+        {% csrf_token %}
+            <label for="author_id">Assign Author:</label>
+            <select name="author_id" id="author">
+                {% for a in authors %}
+                <option value="{{author.id}}">{{a.first_name}} {{a.last_name}}</option>
+                {% endfor %}  
+            </select> 
+        <button class="btn btn-primary">Assign Author</button>
+        </form>
+        {% endif %}    
+    </body>
+
+
